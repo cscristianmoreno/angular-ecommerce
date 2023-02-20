@@ -1,0 +1,24 @@
+.class_section3_container {
+    height: 300px;
+    background-color: rgb(248, 246, 246);
+    justify-content: center;
+}
+
+.class_section3_description_container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.class_section3_description_title {
+    color: #bcac76;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.class_section3_description_subtitle {
+    color: gray;
+    margin-top: 25px;
+    /* font-size: 18px; */
+}

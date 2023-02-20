@@ -1,0 +1,43 @@
+<div ngClass="class_main_container class_products_main_container">
+    <span ngClass="class_section_title class_title">Busca tu producto</span>
+
+    <div ngClass="class_products_search_container">
+        <input (keyup)="handleChangeInput($event)" placeholder="Escribe tu producto"/>
+    </div>
+
+    <div ngClass="class_products_container">
+        <div ngClass="class_products_category_container">
+            <div ngClass="class_products_category" *ngFor="let item of category; index as i">
+                <span [ngClass]="(categorySelected === i) ? 'class_products_category_selected' : ''" (click)="handleClickCategory((item.category) ? item.category : '', i)"><i [ngClass]="'fas ' + item.icon"></i> ({{categoryCollection[i]}})</span>
+                <!-- <span [style.display]="(categorySelected === i) ? 'flex' : 'none'" >{{item.title}}</span> -->
+            </div>
+        </div>
+
+
+        <div *ngFor="let item of products; index as i;" ngClass="class_products">
+            <!-- <img src={{item.thumbnail}}/> -->
+            <div ngClass="class_products_image_container">
+                <img src={{item.image}}/>
+            </div>
+            
+            <ng-template [ngIf]="checkItemOffert(item).filter !== -1" [ngIfElse]="priceDefault">
+                <div ngClass="class_products_offer_container">
+                    <span ngClass="class_products_price">{{transformPrice(item.price - (item.price * (checkItemOffert(item).offer / 100)))}}</span>
+                    <span ngClass="class_products_price class_products_price_offer">{{transformPrice(item.price)}}</span>
+                </div>
+                
+                <span ngClass="class_offer class_products_offer">{{checkItemOffert(item).offer}}% OFF</span>
+            </ng-template>
+            
+            <ng-template #priceDefault>
+                <span ngClass="class_products_price">{{transformPrice(item.price)}}</span>
+            </ng-template>
+
+            <span ngClass="class_products_title">{{item.title}}</span>
+            
+            <button [disabled]="(checkItemExist(item.id) !== -1) ? true : false" (click)="handleButtonClick(item)" ngClass="btn btn-primary">Añadir</button>
+        </div>
+    </div>
+
+    <!-- <SectionNumber [page]="'04'" [title]="'SECTION-4'"></SectionNumber> -->
+</div>

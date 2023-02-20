@@ -1,0 +1,31 @@
+.class_footer_container {
+    display: flex;
+    flex-direction: column;
+    height: 125px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #303031;
+}
+
+.class_footer_icon_container {
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    margin-top: 25px;
+}
+
+.class_footer_icon_container svg {
+    border-style: solid;
+    border-color: white !important;
+}
+
+.class_footer_title_developer_container {
+    display: flex;
+    color: white;
+    font-size: 14px;
+}
+
+.class_footer_title_developer {
+    color: orange;
+}

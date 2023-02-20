@@ -1,0 +1,42 @@
+<div ngClass="class_menu_fake"></div>
+
+<div ngClass="class_menu_container">
+    <ng-template [ngIf]="width > 988" [ngIfElse]="menuMobile">
+        <div ngClass="class_menu_icon_container">
+            <!-- <div ngClass="class_menu_icon" [innerHTML]="this.iconEcommerce"></div> -->
+            <span ngClass="class_menu_title">Electronic-Shop</span>
+        </div>
+        
+        <div ngClass="class_menu_items_container">
+            <a *ngFor="let item of menuItems" routerLink={{item.path}} routerLinkActive="class_menu_item_active" [routerLinkActiveOptions]="{exact: true}">
+                {{item.title}}
+            </a>
+            
+            <div routerLink="/shopping" ngClass="class_menu_icon_shopping_cart">
+                <div [innerHTML]="this.iconShoppingCart"></div>
+                <div #idShoppingCartEffect ngClass="class_menu_icon_effect"></div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #menuMobile>
+        <div (click)="handleOpenMenu()" ngClass="class_menu_icon_shopping_cart class_menu_show_icon">
+            <i ngClass="fas fa-bars"></i>
+        </div>
+
+        <div #idMenuResponsive ngClass="class_menu_responsive_container">
+            
+            <div routerLink="/shopping" ngClass="class_menu_icon_shopping_cart">
+                <div [innerHTML]="this.iconShoppingCart"></div>
+                <div #idShoppingCartEffect ngClass="class_menu_icon_effect"></div>
+            </div>
+            
+            <div ngClass="class_menu_items_container">
+                <a *ngFor="let item of menuItems" routerLink={{item.path}} routerLinkActive="class_menu_item_active" [routerLinkActiveOptions]="{exact: true}">
+                    {{item.title}}
+                </a>
+            </div>
+        </div>
+
+    </ng-template>
+</div>

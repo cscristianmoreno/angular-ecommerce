@@ -1,0 +1,28 @@
+.class_section_number_container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 10px;
+    /* right: 0; */
+    /* bottom: 0;     */
+    transform: rotate(-90deg);
+    top: 50%;
+}
+
+.class_section_number_number {
+    color: gray;
+}
+
+.class_section_number_separator {
+    border-style: solid;
+    border-width: 1px;
+    width: 100px;
+    height: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-color: gray;
+}
+
+.class_section_number_title {
+    font-weight: bolder;
+}

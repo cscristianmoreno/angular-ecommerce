@@ -1,0 +1,69 @@
+<div ngClass="class_main_container class_shopping_container">
+    <span ngClass="class_section_title class_title">Mis compras</span>
+
+    <div ngClass="class_shopping_items_container">
+        <div ngClass="table-responsive-lg">
+            <table ngClass="table">
+                <thead ngClass="thead-dark">
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-template [ngIf]="productsSaved.length" [ngIfElse]="emptySaved">
+
+                        <tr *ngFor="let item of productsSaved; index as i">
+                            <td>
+                                <div ngClass="class_shopping_td_image_container">
+                                    <img src={{item.image}}/>
+                                </div>
+                            </td>
+                            <td>{{item.title}}</td> 
+                            <td>
+                                <div>
+                                    <button (click)="productAmount(i, '+')" ngClass="btn btn-primary btn-sm">+</button>
+                                    <span ngClass="class_shopping_item_amount">{{productsAmount[i]}}</span>
+                                    <button (click)="productAmount(i, '-')"ngClass="btn btn-primary  btn-sm">-</button>
+                                </div>
+                            </td> 
+                            <td>{{transformPrice(item.price * productsAmount[i])}}</td> 
+                            <td><button (click)="removeProduct(i)" ngClass="btn btn-danger">Eliminar</button></td>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template #emptySaved>
+                        <tr ngClass="class_shopping_empty_saved">
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </table>
+        </div>
+
+        <ng-template #elementSaved></ng-template>
+        <div ngClass="class_shopping_total_price_container">
+            <div ngClass="class_shopping_total_price">
+                <span>Seleccionados:</span>
+                <span>{{productsSaved.length}}</span>
+            </div>
+
+            <div ngClass="class_shopping_total_price">
+                <span>A comprar:</span>
+                <span [style.color]="(productPayment() > productsSaved.length) ? 'orange' : null">{{productPayment()}}</span>
+            </div>
+
+            <div ngClass="class_shopping_total_price">
+                <span>Total a pagar:</span>
+                <span style="color: #516ce2;">{{productPrice()}}</span>
+            </div>
+
+            <div ngClass="class_shopping_button_container">
+                <button ngClass="btn btn-primary">Pagar</button>
+                <button (click)="removeAllProducts()" ngClass="btn btn-danger">Vaciar</button>
+            </div>
+        </div>
+    </div>
+</div>

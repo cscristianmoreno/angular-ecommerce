@@ -1,0 +1,43 @@
+<div ngClass="class_main_container class_section2_container">
+    <span ngClass="class_section_title class_title">Ofertas del día</span>
+    
+    
+    <div ngClass="class_section2_description_container">
+        <div ngClass="class_section2_description_title_container">
+            <span ngClass="class_section2_description_title">OFERTA DISPONIBLE</span>
+
+            <div ngClass="class_section2_description_timer_container">
+                <div ngClass="class_section2_description_timer">
+                    <span>{{day}}</span>
+                    <span>días</span>
+                </div>
+
+                <div ngClass="class_section2_description_timer">
+                    <span>{{hour}}</span>
+                    <span>horas</span>
+                </div>
+
+                <div ngClass="class_section2_description_timer">
+                    <span>{{minute}}</span>
+                    <span>minutos</span>
+                </div>
+
+                <div ngClass="class_section2_description_timer">
+                    <span>{{second}}</span>
+                    <span>segundos</span>
+                </div>
+            </div>
+
+            <div ngClass="class_section2_description_offer_container">
+                <span>Productos al azar</span>
+                <span ngClass="class_offer">5% a 90% OFF</span>
+            </div>
+        </div>
+        
+        <div ngClass="class_section2_image_container">
+            <img src="assets/images/image_point_finger.png"/>
+        </div>
+    </div>
+    
+    <SectionNumber [page]="'03'" [title]="'SECTION-3'"></SectionNumber>
+</div>

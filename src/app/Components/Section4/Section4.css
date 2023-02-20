@@ -1,0 +1,80 @@
+.class_section4_container {
+    /* height: 500px; */
+    position: relative;
+    /* background-color: rgb(248, 248, 248); */
+}
+
+.class_section4_vendor_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 75%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.class_section4_vendor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 175px;
+    height: 175px;
+    /* border-style: solid; */
+    border-width: 1px;
+    /* border-color: rgb(240, 240, 240); */
+    /* box-shadow: 5px 5px 10px rgb(0, 0, 0, 20%); */
+    border-radius: 30px;
+    /* background-color: #4d54bb; */
+    /* color: white; */
+    /* font-weight: bolder; */
+}
+
+/* .class_section4_vendor_image_container {
+    width: 350px;
+    height: 250px;
+    border-style: solid;
+} */
+
+.class_section4_vendor_image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.class_section4_icon_title {
+    /* margin-left: 10px; */
+    margin-top: 5px;
+    font-style: italic;
+    text-align: center;
+    font-weight: bolder;
+    /* font-size: 14px; */
+}
+
+.class_section4_icon_subtitle {
+    margin-top: 20px; 
+    /* font-style: italic; */
+    font-size: 14px;
+    text-align: center;
+    color: gray;
+    
+}
+
+:host ::ng-deep .class_section4_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 50px; */
+    /* height: 75px; */
+    /* padding: 5px; */
+    border-radius: 100%;
+    /* background-color: gray; */
+}
+
+:host ::ng-deep svg {
+    width: 65px;
+    height: 65px;
+}
+
+:host ::ng-deep svg path {
+    fill: gray;
+}
