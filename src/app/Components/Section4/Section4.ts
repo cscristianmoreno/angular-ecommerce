@@ -1,8 +1,9 @@
-import { Component, Input, ViewChildren, AfterViewInit, Renderer2 } from "@angular/core";
+import { Component, ViewChildren, AfterViewInit, Renderer2, ElementRef } from "@angular/core";
 import { IconSvg } from "../Service/icon.service";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 
 import { SanitizerElement } from "../Sanitizer/Sanitizer";
+import { ObserverService } from "../Service/observer.service";
 
 
 @Component({
@@ -22,8 +23,9 @@ export class Section4 {
     public iconPayment: SafeHtml = "";
 
     @ViewChildren("idSection4Svg") public idSection4Svg: any;
+    @ViewChildren("idObsevable") public idObsevable!: ElementRef; 
 
-    constructor(private icon: IconSvg, private sanitizer: DomSanitizer, private renderer2: Renderer2) {
+    constructor(private icon: IconSvg, private sanitizer: DomSanitizer, private renderer2: Renderer2, private observable: ObserverService) {
         this.icon.getIconSvg("Comfort").subscribe((res: any) => {
             this.iconComfort = new SanitizerElement(sanitizer).transformHTML(res);
         })
@@ -50,12 +52,7 @@ export class Section4 {
     }
 
     public ngAfterViewInit() {
-        // const element = this.renderer2.selectRootElement(this.idSection4Svg);
-        // const newElement = this.renderer2.createElement("svg");
-
-        // element.map((str: any) => {
-        //     this.renderer2.appendChild(str.nativeElement, newElement);
-        //     console.log(str.nativeElement);
-        // })
+        const observable = this.renderer2.selectRootElement(this.idObsevable);
+        this.observable.createObserver(observable);
     }
 }

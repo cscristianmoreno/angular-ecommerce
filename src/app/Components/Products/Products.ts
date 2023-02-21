@@ -1,14 +1,15 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit } from "@angular/core";
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit, HostListener, ViewChildren, Renderer2, ElementRef, OnChanges, SimpleChanges } from "@angular/core";
 import { PhotosService, ServiceService } from "../Service/service.service";
 
 import { categoryStruct, productsStruct } from "../interfaceStruct/interfaceStruct";
 
 import { CookieService } from "ngx-cookie-service";
 
-import { of } from "rxjs"
+import { map, of, from } from "rxjs"
 
 import products from "src/products";
 import { ProductsServices } from "../Service/products.service";
+import { ObserverService } from "../Service/observer.service";
 
 const CATEGORY: Array<categoryStruct> = [
     { title: "Todo", icon: "fa-border-all", category: "" },
@@ -46,9 +47,26 @@ export class Products implements AfterViewInit {
     public categorySelected:number = 0;
     public productsSelected: productsStruct[] = [];
 
-    constructor(private productsService: ProductsServices, private changes: ChangeDetectorRef) {
+    @ViewChildren("idProduct") public idProduct!: ElementRef;
+
+    constructor(private productsService: ProductsServices, private changes: ChangeDetectorRef, private renderer2: Renderer2, private observer: ObserverService) {
         // this.cookies.set("Prueba", "1SLDJKLDJ1231231283908SD90W");
     }
+
+    // @HostListener("window: scroll", ["$event"]) public eventScroll(event: any) {
+    //     console.log(event.currentTarget.scrollY);
+
+    //     const items = this.renderer2.selectRootElement(this.idProduct);
+
+    //     items.map((str: any) => {
+    //         const element = this.renderer2.selectRootElement(str).nativeElement;
+    //         const position = element.getBoundingClientRect().y
+
+    //         if (event.currentTarget.scrollY >= position) {
+    //             this.renderer2.setStyle(element, "opacity", 1);
+    //         }
+    //     })
+    // }
 
     public ngAfterViewInit() {
         this.category = CATEGORY;
@@ -59,8 +77,12 @@ export class Products implements AfterViewInit {
             this.productsSelected = products;
             // console.log(products);
         })
-
+        
         this.changes.detectChanges();
+
+        const element = this.renderer2.selectRootElement(this.idProduct);
+        this.observer.createObserver(element);
+
     }
 
     public transformPrice(price: number) {
@@ -70,6 +92,8 @@ export class Products implements AfterViewInit {
     public handleClickCategory(category: string, selected: number) {
         this.categorySelected = selected;
         this.itemFilter(category, FILTER_CATEGORY);
+        // console.log(this.renderer2.selectRootElement(this.idProduct));
+        // this.changes.detectChanges();
     }
 
     public handleChangeInput(event: any) {
@@ -84,7 +108,7 @@ export class Products implements AfterViewInit {
     public itemFilter(filter: string, type: number) {
         filter = filter.replace("/\s/g", "");
         this.products = products.items;
-        let items!: productsStruct[];
+        let items: productsStruct[] = [...this.products];
 
         if (type == FILTER_CATEGORY) {
             items = this.products.filter((str) => str.category.includes(filter));
@@ -93,8 +117,16 @@ export class Products implements AfterViewInit {
             items = this.products.filter((str) => str.title.toLowerCase().includes(filter.toLowerCase()));
             this.categorySelected = 0;
         }
-
+        
         this.products = items;
+        this.changes.detectChanges();
+
+        const element = this.renderer2.selectRootElement(this.idProduct);
+        this.observer.createObserver(element);
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        console.log(changes);
     }
 
     public categoryNumbers() {

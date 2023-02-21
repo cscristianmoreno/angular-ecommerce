@@ -1,5 +1,6 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit, Renderer2, ViewChildren, ElementRef } from "@angular/core";
 import { productsStruct } from "../interfaceStruct/interfaceStruct";
+import { ObserverService } from "../Service/observer.service";
 
 import { ProductsServices } from "../Service/products.service";
 
@@ -17,7 +18,9 @@ export class Shopping {
     public productsAmount: number[] = [];
     public productsPrice: number[] = [];
 
-    constructor(private products: ProductsServices, private changes: ChangeDetectorRef) {
+    @ViewChildren("idObservable") public idObservable!: ElementRef; 
+
+    constructor(private products: ProductsServices, private changes: ChangeDetectorRef, private renderer2: Renderer2, private observer: ObserverService) {
     }
 
     public transformPrice(value: number) {
@@ -42,6 +45,9 @@ export class Shopping {
             // console.log(products);
             this.changes.detectChanges();
         })
+
+        const observable = this.renderer2.selectRootElement(this.idObservable);
+        this.observer.createObserver(observable); 
     }
 
     public productAmount(i: number, type: string) {

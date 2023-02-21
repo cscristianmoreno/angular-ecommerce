@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChildren, AfterViewInit, ElementRef, Renderer2 } from "@angular/core";
+import { ObserverService } from "../Service/observer.service";
 
 @Component({
     selector: "Section5",
@@ -8,9 +9,16 @@ import { Component, OnInit } from "@angular/core";
     ]
 })
 
-export class Section5 implements OnInit {
-    public ngOnInit() {
-        
+export class Section5 implements AfterViewInit {
+    @ViewChildren("idObservable") public idObservable!: ElementRef; 
+
+    constructor(private renderer2: Renderer2, private observer: ObserverService) {
+
+    }
+
+    public ngAfterViewInit() {
+        const observable = this.renderer2.selectRootElement(this.idObservable);
+        this.observer.createObserver(observable);
     }
 
 }

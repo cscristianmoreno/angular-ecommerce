@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, AfterViewInit, ViewChildren, Renderer2, ElementRef } from "@angular/core";
 import { CookieService } from "ngx-cookie-service";
 
 import products from "src/products";
 import { productsStruct } from "../interfaceStruct/interfaceStruct";
+import { ObserverService } from "../Service/observer.service";
 
 @Component({
     selector: "Section2",
@@ -12,7 +13,7 @@ import { productsStruct } from "../interfaceStruct/interfaceStruct";
     ]
 })
 
-export class Section2 {
+export class Section2 implements AfterViewInit{
     public collection: Array<any> = [];
     public positions: Array<any> = []; 
     
@@ -20,9 +21,17 @@ export class Section2 {
     public minute: number = 0;
     public hour: number = 0;
     public second: number = 0;
+
+    @ViewChildren("idObsevable") idObservable!: ElementRef;
     
-    constructor(private cookies: CookieService) {
+    constructor(private cookies: CookieService, private renderer2: Renderer2, private observer: ObserverService) {
         this.getTimer();
+    }
+
+    public ngAfterViewInit() {
+        const observable = this.renderer2.selectRootElement(this.idObservable);
+
+        this.observer.createObserver(observable);
     }
 
     public getTimer() {

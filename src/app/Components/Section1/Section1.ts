@@ -1,5 +1,6 @@
-import { Component, Input, ViewChildren, OnInit, Renderer2, QueryList, AfterViewInit } from "@angular/core";
+import { Component, ViewChildren, OnInit, Renderer2, AfterViewInit, ElementRef,  } from "@angular/core";
 import products from "src/products";
+import { ObserverService } from "../Service/observer.service";
 
 @Component({
     selector: "Section1",
@@ -12,10 +13,11 @@ import products from "src/products";
 export class Section1 implements OnInit {
     public items:Array<any> = [];
 
-    @ViewChildren("idImage") idImage: any;
-    @ViewChildren("idTitle") idTitle: any;
+    @ViewChildren("idImage") idImage!: ElementRef;
+    @ViewChildren("idTitle") idTitle!: ElementRef;
+    @ViewChildren("idObservable ") idObservable !: ElementRef;
 
-    constructor(private renderer2: Renderer2) {
+    constructor(private renderer2: Renderer2, private observer: ObserverService) {
         // this.idImage = null;
         // console.log(products);
         // console.log(this.image);
@@ -40,9 +42,10 @@ export class Section1 implements OnInit {
             // console.log(a)
         })
 
-        // console.log(arrayTitles);
-
         this.changePhoto(arrayImages, arrayTitles);
+
+        const observable = this.renderer2.selectRootElement(this.idObservable);
+        this.observer.createObserver(observable);
     }
     
 

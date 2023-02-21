@@ -31,7 +31,7 @@
     margin-left: calc(20% / 5);
     /* padding: 15px; */
     /* border-radius: 10px; */
-    transition: 0.25s;
+    transition: 0.5s;
     position: relative;
     text-align: center;
 }

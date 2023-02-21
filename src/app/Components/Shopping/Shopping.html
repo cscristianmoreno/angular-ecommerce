@@ -1,10 +1,10 @@
 <div ngClass="class_main_container class_shopping_container">
-    <span ngClass="class_section_title class_title">Mis compras</span>
+    <span #idObservable ngClass="class_section_title class_title">Mis compras</span>
 
     <div ngClass="class_shopping_items_container">
         <div ngClass="table-responsive-lg">
-            <table ngClass="table">
-                <thead ngClass="thead-dark">
+            <table #idObservable ngClass="table">
+                <thead #idObservable ngClass="thead-dark">
                     <tr>
                         <th scope="col">Producto</th>
                         <th scope="col">Nombre</th>
@@ -16,7 +16,7 @@
                 <tbody>
                     <ng-template [ngIf]="productsSaved.length" [ngIfElse]="emptySaved">
 
-                        <tr *ngFor="let item of productsSaved; index as i">
+                        <tr #idObservable *ngFor="let item of productsSaved; index as i">
                             <td>
                                 <div ngClass="class_shopping_td_image_container">
                                     <img src={{item.image}}/>
@@ -44,7 +44,7 @@
         </div>
 
         <ng-template #elementSaved></ng-template>
-        <div ngClass="class_shopping_total_price_container">
+        <div #idObservable ngClass="class_shopping_total_price_container">
             <div ngClass="class_shopping_total_price">
                 <span>Seleccionados:</span>
                 <span>{{productsSaved.length}}</span>

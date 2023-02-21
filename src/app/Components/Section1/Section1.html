@@ -1,8 +1,8 @@
 <div ngClass="class_main_container class_section1_container">
-    <span ngClass="class_section_title class_title">Busca el producto que más te guste</span>
+    <span #idObservable ngClass="class_section_title class_title">Busca el producto que más te guste</span>
 
     <div ngClass="class_section1_products_container">
-        <div *ngFor="let item of [].constructor(6); index as i" ngClass="class_section_1_products">
+        <div #idObservable *ngFor="let item of [].constructor(6); index as i" ngClass="class_section_1_products">
             <img #idImage ngClass="class_section_1_image" src={{items[i].image}}/>
             <!-- {{items[i].title}} -->
 
