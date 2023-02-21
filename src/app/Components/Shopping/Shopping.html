@@ -16,7 +16,7 @@
                 <tbody>
                     <ng-template [ngIf]="productsSaved.length" [ngIfElse]="emptySaved">
 
-                        <tr *ngFor="let item of productsSaved; index as i">
+                        <tr #idObservable *ngFor="let item of productsSaved; index as i">
                             <td>
                                 <div ngClass="class_shopping_td_image_container">
                                     <img src={{item.image}}/>

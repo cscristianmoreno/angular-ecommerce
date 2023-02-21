@@ -25,7 +25,7 @@ export class ObserverService {
             const intersection = new IntersectionObserver((entries: any) => {
                 observer.next(entries);
             }, {
-                threshold: 0.5
+                threshold: 0
             })
             
             element.map((str) => {
