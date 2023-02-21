@@ -18,7 +18,7 @@ export class Section5 implements AfterViewInit {
 
     public ngAfterViewInit() {
         const observable = this.renderer2.selectRootElement(this.idObservable);
-        this.observer.createObserver(observable);
+        this.observer.createObserver(observable, "FADE");
     }
 
 }

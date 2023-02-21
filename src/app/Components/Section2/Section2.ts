@@ -31,7 +31,7 @@ export class Section2 implements AfterViewInit{
     public ngAfterViewInit() {
         const observable = this.renderer2.selectRootElement(this.idObservable);
 
-        this.observer.createObserver(observable);
+        this.observer.createObserver(observable, "SCALE");
     }
 
     public getTimer() {

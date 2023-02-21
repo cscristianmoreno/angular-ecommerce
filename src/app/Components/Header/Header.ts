@@ -22,6 +22,6 @@ export class Header implements AfterViewInit {
     public ngAfterViewInit() {
         const element = this.renderer2.selectRootElement(this.idObservable);
 
-        this.observer.createObserver(element);
+        this.observer.createObserver(element, "SCALE");
     }
 }

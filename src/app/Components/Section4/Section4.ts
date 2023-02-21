@@ -53,6 +53,6 @@ export class Section4 {
 
     public ngAfterViewInit() {
         const observable = this.renderer2.selectRootElement(this.idObsevable);
-        this.observable.createObserver(observable);
+        this.observable.createObserver(observable, "SCALE");
     }
 }

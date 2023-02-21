@@ -81,7 +81,7 @@ export class Products implements AfterViewInit {
         this.changes.detectChanges();
 
         const element = this.renderer2.selectRootElement(this.idProduct);
-        this.observer.createObserver(element);
+        this.observer.createObserver(element, "SCALE");
 
     }
 
@@ -122,7 +122,7 @@ export class Products implements AfterViewInit {
         this.changes.detectChanges();
 
         const element = this.renderer2.selectRootElement(this.idProduct);
-        this.observer.createObserver(element);
+        this.observer.createObserver(element, "SCALE");
     }
 
     ngOnChanges(changes: SimpleChanges) {

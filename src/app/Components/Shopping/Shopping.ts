@@ -47,7 +47,7 @@ export class Shopping {
         })
 
         const observable = this.renderer2.selectRootElement(this.idObservable);
-        this.observer.createObserver(observable); 
+        this.observer.createObserver(observable, "FADE"); 
     }
 
     public productAmount(i: number, type: string) {

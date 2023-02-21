@@ -18,6 +18,6 @@ export class Section3 implements AfterViewInit {
 
     public ngAfterViewInit() {
         const observable = this.renderer2.selectRootElement(this.idObsevable);
-        this.observer.createObserver(observable); 
+        this.observer.createObserver(observable, "FADE"); 
     }
 }

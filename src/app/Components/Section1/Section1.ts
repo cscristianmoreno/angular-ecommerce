@@ -45,7 +45,7 @@ export class Section1 implements OnInit {
         this.changePhoto(arrayImages, arrayTitles);
 
         const observable = this.renderer2.selectRootElement(this.idObservable);
-        this.observer.createObserver(observable);
+        this.observer.createObserver(observable, "FADE");
     }
     
 
