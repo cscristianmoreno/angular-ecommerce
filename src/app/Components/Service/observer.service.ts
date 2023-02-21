@@ -45,7 +45,7 @@ export class ObserverService {
 
                         this.renderer2.setStyle(str.target, "opacity", "1");
                         // this.renderer2.setStyle(str.target, "transform", "scale(1)");
-                        this.renderer2.setStyle(str.target, "transition", "0.5s");
+                        this.renderer2.setStyle(str.target, "transition", "1s");
                     }, 200 * (num + 1))
                 }
             })
