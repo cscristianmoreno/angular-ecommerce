@@ -46,7 +46,7 @@
         <ng-template #elementSaved></ng-template>
         <div #idObservable ngClass="class_shopping_total_price_container">
             <div ngClass="class_shopping_total_price">
-                <span>Seleccionados:</span>
+                <span>Productos:</span>
                 <span>{{productsSaved.length}}</span>
             </div>
 
@@ -56,8 +56,23 @@
             </div>
 
             <div ngClass="class_shopping_total_price">
-                <span>Total a pagar:</span>
-                <span style="color: #516ce2;">{{productPrice()}}</span>
+                <span>Precio:</span>
+                <span style="color: #516ce2;">+{{transformPrice(productPrice())}}</span>
+            </div>
+
+            <div ngClass="class_shopping_total_price">
+                <span>Adicional:</span>
+                <span style="color: orange;">+{{transformPrice(productPrice() * (0.0015 * productPayment()))}}</span>
+            </div>
+
+            <div ngClass="class_shopping_total_price">
+                <span>Cargo:</span>
+                <span ngClass="class_shopping_percent">{{(0.15 * productPayment()).toFixed(1)}}%</span>
+            </div>
+
+            <div style="margin-top: 20px;" ngClass="class_shopping_total_price">
+                <span>Total:</span>
+                <span style="color: red;">+{{transformPrice(productPaymentTotal())}}</span>
             </div>
 
             <div ngClass="class_shopping_button_container">

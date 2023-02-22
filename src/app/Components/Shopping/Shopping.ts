@@ -17,6 +17,7 @@ export class Shopping {
     public productsSaved: productsStruct[] = [];
     public productsAmount: number[] = [];
     public productsPrice: number[] = [];
+    
 
     @ViewChildren("idObservable") public idObservable!: ElementRef; 
 
@@ -86,7 +87,7 @@ export class Shopping {
             price += str.price * this.productsAmount[num];
         })
         
-        return this.transformPrice(price);
+        return price;
     }
 
     public productPayment() {
@@ -98,6 +99,14 @@ export class Shopping {
         }
 
         // this.changes.detectChanges();
+
+        return payment;
+    }
+
+    public productPaymentTotal() {
+        let payment = 0;
+        payment = this.productPrice();
+        payment = payment + (payment * (0.0015 * this.productPayment()))
 
         return payment;
     }
