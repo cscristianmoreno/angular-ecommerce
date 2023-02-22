@@ -82,6 +82,10 @@
         /* height: 80%; */
     }
 
+    .class_section1_products_container {
+        width: 80% !important;
+    }
+
     .class_section_title {
         text-align: center;
         font-size: 25px !important;
@@ -178,13 +182,20 @@
     .class_shopping_items_container td {
         min-width: 215px;
     }
-
-    .class_shopping_total_price_container {
-        /* align-items: initial !important; */
-    }
 }
 
 @media only screen and (max-width: 720px) {
+
+    .class_section_1_products {
+        width: 75% !important;
+        margin-left: calc(25% / 2) !important;
+        height: 200px !important;
+    }
+    
+    .class_section_1_products {
+        /* width: 200px !important; */
+    }
+
     .class_products {
         width: 40% !important;
         margin-left: calc(20% / 3) !important;
