@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, HostListener, ViewChild, Renderer2 } from "@angular/core";
+import { Component, Input, OnInit, HostListener, ViewChild, ViewChildren, Renderer2, ElementRef } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { CookieService } from "ngx-cookie-service";
 import { menuItemsStruct } from "../interfaceStruct/interfaceStruct";
@@ -30,7 +30,7 @@ export class Menu implements OnInit {
 
     public width!: number;
     
-    @ViewChild("idShoppingCartEffect") public shoppingCartEffect: any;
+    @ViewChildren("idShoppingCartEffect") public shoppingCartEffect: any;
     @ViewChild("idMenuResponsive") public idMenuResponsive: any;
 
     @HostListener("window: resize", ["$event"]) public eventReize(event: any) {
@@ -57,9 +57,11 @@ export class Menu implements OnInit {
 
     public ngAfterViewInit() {
         this.products.productUpdated$.subscribe((products) => {
-                const shoppingCartEffect = this.renderer2.selectRootElement(this.shoppingCartEffect).nativeElement;
+            const shoppingCartEffect = this.renderer2.selectRootElement(this.shoppingCartEffect);
 
-                this.renderer2.setStyle(shoppingCartEffect, "opacity", (products.length) ? 1 : 0);
+            shoppingCartEffect.map((str: ElementRef) => {
+                this.renderer2.setStyle(str.nativeElement, "opacity", (products.length) ? 1 : 0);
+            })
         });
     }
 
