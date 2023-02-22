@@ -109,11 +109,14 @@
     }
 
     .class_section3_container {
-        height: 400px !important;
+        height: auto !important;
     }
 
     .class_section3_description_container {
         width: 85% !important;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 14px !important;
     }
 
     .class_section4_vendor_container {
