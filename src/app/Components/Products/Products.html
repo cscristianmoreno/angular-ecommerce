@@ -1,14 +1,14 @@
 <div ngClass="class_main_container class_products_main_container">
-    <span ngClass="class_section_title class_title">Busca tu producto</span>
+    <span #idObservable ngClass="class_section_title class_title">Busca tu producto</span>
 
-    <div ngClass="class_products_search_container">
+    <div #idObservable ngClass="class_products_search_container">
         <input ngClass="form-control" (keyup)="handleChangeInput($event)" placeholder="Escribe tu producto"/>
     </div>
 
     <div ngClass="class_products_container">
         <div ngClass="class_products_category_container">
             <div ngClass="class_products_category" *ngFor="let item of category; index as i">
-                <span [ngClass]="(categorySelected === i) ? 'class_products_category_selected' : ''" (click)="handleClickCategory((item.category) ? item.category : '', i)"><i [ngClass]="'fas ' + item.icon"></i> ({{categoryCollection[i]}})</span>
+                <span #idObservable [ngClass]="(categorySelected === i) ? 'class_products_category_selected' : ''" (click)="handleClickCategory((item.category) ? item.category : '', i)"><i [ngClass]="'fas ' + item.icon"></i> ({{categoryCollection[i]}})</span>
                 <!-- <span [style.display]="(categorySelected === i) ? 'flex' : 'none'" >{{item.title}}</span> -->
             </div>
         </div>

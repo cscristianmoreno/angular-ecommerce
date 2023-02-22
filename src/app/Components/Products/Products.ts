@@ -48,6 +48,7 @@ export class Products implements AfterViewInit {
     public productsSelected: productsStruct[] = [];
 
     @ViewChildren("idProduct") public idProduct!: ElementRef;
+    @ViewChildren("idObservable") public idObservable!: ElementRef;
 
     constructor(private productsService: ProductsServices, private changes: ChangeDetectorRef, private renderer2: Renderer2, private observer: ObserverService) {
         // this.cookies.set("Prueba", "1SLDJKLDJ1231231283908SD90W");
@@ -82,6 +83,9 @@ export class Products implements AfterViewInit {
 
         const element = this.renderer2.selectRootElement(this.idProduct);
         this.observer.createObserver(element, "SCALE");
+
+        const observable = this.renderer2.selectRootElement(this.idObservable);
+        this.observer.createObserver(observable, "FADE");
 
     }
 
