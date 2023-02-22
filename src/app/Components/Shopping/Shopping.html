@@ -2,12 +2,11 @@
     <span #idObservable ngClass="class_section_title class_title">Mis compras</span>
 
     <div ngClass="class_shopping_items_container">
-        <div ngClass="table-responsive-lg">
-            <table ngClass="table">
+        <div ngClass="table-responsive-lg class_shopping_table_container">
+            <table #idObservable ngClass="table">
                 <thead ngClass="thead-dark">
                     <tr>
                         <th scope="col">Producto</th>
-                        <th scope="col">Nombre</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Acción</th>
@@ -16,13 +15,13 @@
                 <tbody>
                     <ng-template [ngIf]="productsSaved.length" [ngIfElse]="emptySaved">
 
-                        <tr #idObservable *ngFor="let item of productsSaved; index as i">
+                        <tr *ngFor="let item of productsSaved; index as i">
                             <td>
                                 <div ngClass="class_shopping_td_image_container">
                                     <img src={{item.image}}/>
+                                    <span style="margin-left: 20px">{{item.title}}</span>
                                 </div>
                             </td>
-                            <td>{{item.title}}</td> 
                             <td>
                                 <div>
                                     <button (click)="productAmount(i, '+')" ngClass="btn btn-primary btn-sm">+</button>
@@ -31,7 +30,7 @@
                                 </div>
                             </td> 
                             <td>{{transformPrice(item.price * productsAmount[i])}}</td> 
-                            <td><button (click)="removeProduct(i)" ngClass="btn btn-danger">Eliminar</button></td>
+                            <td><span (click)="removeProduct(i)" ngClass="class_shopping_item_delete">&times;</span></td>
                         </tr>
                     </ng-template>
 
@@ -42,43 +41,102 @@
                 </tbody>
             </table>
         </div>
-
-        <ng-template #elementSaved></ng-template>
+        
         <div #idObservable ngClass="class_shopping_total_price_container">
+            <div ngClass="class_shopping_total_price_title_container">
+                <span ngClass="class_shopping_total_price_title">Orden de compra</span>
+                <i ngClass="fas fa-trash" (click)="removeAllProducts()"></i>
+            </div>
             <div ngClass="class_shopping_total_price">
-                <span>Productos:</span>
+                <span ngClass="class_shopping_price_title">Productos</span>
                 <span>{{productsSaved.length}}</span>
             </div>
 
+            <div ngClass="class_shopping_price_line_divisor"></div>
+
             <div ngClass="class_shopping_total_price">
-                <span>A comprar:</span>
+                <span ngClass="class_shopping_price_title">A comprar</span>
                 <span [style.color]="(productPayment() > productsSaved.length) ? 'orange' : null">{{productPayment()}}</span>
             </div>
 
-            <div ngClass="class_shopping_total_price">
-                <span>Precio:</span>
-                <span style="color: #516ce2;">+{{transformPrice(productPrice())}}</span>
-            </div>
+            <div ngClass="class_shopping_price_line_divisor"></div>
 
             <div ngClass="class_shopping_total_price">
-                <span>Adicional:</span>
+                <span ngClass="class_shopping_price_title">Precio</span>
+                <span style="color: #516ce2;">{{transformPrice(productPrice())}}</span>
+            </div>
+
+            <div ngClass="class_shopping_price_line_divisor"></div>
+
+            <div ngClass="class_shopping_total_price">
+                <span ngClass="class_shopping_price_title">Adicional</span>
                 <span style="color: orange;">+{{transformPrice(productPrice() * (0.0015 * productPayment()))}}</span>
             </div>
 
+            <div ngClass="class_shopping_price_line_divisor"></div>
+
             <div ngClass="class_shopping_total_price">
-                <span>Cargo:</span>
+                <span ngClass="class_shopping_price_title">Tasa</span>
                 <span ngClass="class_shopping_percent">{{(0.15 * productPayment()).toFixed(1)}}%</span>
             </div>
 
-            <div style="margin-top: 20px;" ngClass="class_shopping_total_price">
-                <span>Total:</span>
-                <span style="color: red;">+{{transformPrice(productPaymentTotal())}}</span>
+            <div ngClass="class_shopping_total_price class_shopping_final_price">
+                <span ngClass="class_shopping_price_title">Total</span>
+                <span>{{transformPrice(productPaymentTotal())}}</span>
             </div>
 
             <div ngClass="class_shopping_button_container">
                 <button ngClass="btn btn-primary">Pagar</button>
-                <button (click)="removeAllProducts()" ngClass="btn btn-danger">Vaciar</button>
             </div>
         </div>
     </div>
+
+    <!-- <span #idObservable ngClass="class_section_title class_title">Datos</span>
+
+    <div ngClass="class_shopping_form_container">
+        <div ngClass="class_shopping_field_container">
+            <div ngClass="class_shopping_field">
+                <label>Nombre completo</label>
+                <input type="text" ngClass="form-control" placeholder="Cristian Moreno"/>
+            </div>
+
+            <div ngClass="class_shopping_field">
+                <label>Correo electrónico</label>
+                <input type="text" ngClass="form-control" placeholder="example@hotmail.com"/>
+            </div>
+
+            
+        </div>
+
+        <div ngClass="class_shopping_field_container">
+            <div ngClass="class_shopping_field">
+                <label>Calle</label>
+                <input type="text" ngClass="form-control" placeholder="Cerro San Bernardo"/>
+            </div>
+
+            <div ngClass="class_shopping_field">
+                <label>Provincia</label>
+                <input type="text" ngClass="form-control" placeholder="Salta"/>
+            </div>
+        </div>
+
+        <div ngClass="class_shopping_field_container">
+            <div ngClass="class_shopping_field">
+                <label>ZIP</label>
+                <input type="text" ngClass="form-control" placeholder="Código postal"/>
+            </div>
+
+            <div ngClass="class_shopping_field">
+                <label>País</label>
+                <input type="text" ngClass="form-control" placeholder="Argentina"/>
+            </div>
+        </div>
+
+        <div ngClass="class_shopping_field_container">
+            <div ngClass="class_shopping_field">
+                <label>Teléfono</label>
+                <input type="text" ngClass="form-control" placeholder="+54 9 xxx xxx-xxxx"/>
+            </div>
+        </div>
+    </div> -->
 </div>

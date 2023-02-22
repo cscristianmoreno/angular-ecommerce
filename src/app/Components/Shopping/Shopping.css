@@ -1,38 +1,44 @@
 .class_shopping_container {
     min-height: 700px;
+    font-family: "Lato", sans-serif !important;
 }
 
 .class_shopping_items_container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-top: 50px;
-    width: 80%;
+    width: 90%;
+}
+
+.class_shopping_table_container {
+    width: 60%;
 }
 
 .class_shopping_td_image_container {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     width: 100%;
-    height: 50px;
-    position: relative;
+    height: 100px;
     overflow: hidden;
 }
 
-.class_shopping_items_container img {
-    /* max-width: 50%; */
-    height: 100%;
-}
-
-.class_shopping_items_container {
-    text-align: center;
-    /* padding: 25px; */
-    /* text-align: center; */
+.class_shopping_items_container td img {
+    max-width: 100px;
+    /* height: 100px; */
+    /* object-fit: cover; */
 }
 
 .class_shopping_items_container td {
     vertical-align: middle;
+    /* justify-content: end; */
     white-space: nowrap;
+}
+
+.class_shopping_item_delete {
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .class_shopping_item_amount {
@@ -45,26 +51,71 @@
 .class_shopping_total_price_container {
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 20%;
     /* flex-direction: row-reverse; */
-    margin-top: 25px;
-    margin-bottom: 25px;
-    align-items: end;
-    padding: 15px;
-    border-style: solid;
-    border-left: 0px;
-    border-right: 0px;
+    /* margin-top: 25px;
+    margin-bottom: 25px; */
+    /* align-items: center; */
+    /* padding: 15px; */
+    border-radius: 10px;
+    height: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 5%);
+    /* border-style: solid; */
+    /* border-color: orange; */
+    /* background-color: rgb(240, 240, 240); */
     border-width: 1px;
+    /* color: white; */
+}
+
+.class_shopping_total_price_title_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+    padding: 15px;
+}
+
+.class_shopping_total_price_title_container i {
+    color: #f54c4c;
+    cursor: pointer;
 }
 
 .class_shopping_total_price {
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 350px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px
+}
+
+.class_shopping_price_title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.class_shopping_price_line_divisor {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(241, 241, 241);
+}
+
+.class_shopping_final_price {
+    display: flex;
+    align-items: center;
+    background-color: #b4b4b4;
+    color: white;
+    /* font-weight: bolder; */
+    font-size: 18px;
+    padding: 10px;
 }
 
 .class_shopping_total_price span {
     /* padding: 10px; */
-    margin-top: 10px;
     /* width: 100px; */
 }
 
@@ -78,4 +129,28 @@
 .class_shopping_empty_saved {
     /* padding: 100px; */
     height: 125px;
+}
+
+.class_shopping_form_container {
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+    width: 45%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: black;
+    font-weight: bolder;
+}
+
+.class_shopping_field_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.class_shopping_field {
+    display: flex;
+    flex-direction: column;
 }

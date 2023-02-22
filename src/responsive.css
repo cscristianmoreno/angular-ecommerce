@@ -182,6 +182,22 @@
     .class_shopping_items_container td {
         min-width: 215px;
     }
+
+    .class_shopping_table_container {
+        width: 90% !important;
+    }
+
+    .class_shopping_total_price_container {
+        position: initial !important;
+        top: initial !important;
+        width: 100% !important;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .class_shopping_total_price {
+        width: 100% !important;
+    }
 }
 
 @media only screen and (max-width: 720px) {
