@@ -134,7 +134,12 @@
     }
 
     .class_section5_input_container {
-        width: 95%;
+        /* width: 75%; */
+        justify-content: center;
+    }
+
+    .class_section5_input_container input {
+        width: 60% !important
     }
 
     .class_products_container {
