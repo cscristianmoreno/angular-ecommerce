@@ -8,6 +8,13 @@
         align-items: initial !important;
     }
 
+    .class_header_subtitle_container {
+        margin-top: 10px;
+        max-width: 100% !important;
+        text-align: center;
+        justify-content: center;
+    }
+
     .class_menu_icon_shopping_cart {
         margin-left: 0px !important;
         margin-top: 25px;

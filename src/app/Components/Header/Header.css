@@ -7,6 +7,10 @@
     position: relative;
 }
 
+.class_header_container .class_subtitle {
+    max-width: 350px;
+}
+
 .class_header_title_container {
     display: flex;
     flex-direction: column;
@@ -16,8 +20,8 @@
 
 .class_header_subtitle_container {
     display: flex;
-    flex-direction: column;
     margin-top: 10px;
+    max-width: 450px;
 }
 
 .class_header_image_container {
