@@ -15,10 +15,10 @@
 
 .class_section4_vendor {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 175px;
-    height: 175px;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    width: 250px;
+    /* height: 175px; */
     /* border-style: solid; */
     border-width: 1px;
     /* border-color: rgb(240, 240, 240); */
@@ -29,11 +29,10 @@
     /* font-weight: bolder; */
 }
 
-/* .class_section4_vendor_image_container {
-    width: 350px;
-    height: 250px;
-    border-style: solid;
-} */
+.class_section4_title_container {
+    display: flex;
+    flex-direction: column;
+}
 
 .class_section4_vendor_image_container img {
     width: 100%;
@@ -43,26 +42,26 @@
 
 .class_section4_icon_title {
     /* margin-left: 10px; */
-    margin-top: 5px;
+    /* margin-top: 5px; */
     font-style: italic;
-    text-align: center;
+    /* text-align: center; */
     font-weight: bolder;
     /* font-size: 14px; */
 }
 
 .class_section4_icon_subtitle {
-    margin-top: 20px; 
+    /* margin-top: 20px;  */
     /* font-style: italic; */
     font-size: 14px;
-    text-align: center;
+    /* text-align: center; */
     color: gray;
     
 }
 
 :host ::ng-deep .class_section4_icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     /* width: 50px; */
     /* height: 75px; */
     /* padding: 5px; */
@@ -73,6 +72,8 @@
 :host ::ng-deep svg {
     width: 65px;
     height: 65px;
+    padding: 10px;
+    color: gray;
 }
 
 :host ::ng-deep svg path {
