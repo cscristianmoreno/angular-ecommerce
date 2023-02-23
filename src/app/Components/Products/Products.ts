@@ -90,7 +90,7 @@ export class Products implements AfterViewInit {
     }
 
     public transformPrice(price: number) {
-        return new Intl.NumberFormat("de-DE", { style: "currency", currency: "USD"}).format(price);
+        return "$" + new Intl.NumberFormat("en-US", { maximumSignificantDigits: 5 }).format(price);
     }
 
     public handleClickCategory(category: string, selected: number) {
