@@ -63,14 +63,14 @@
 
             <div ngClass="class_shopping_total_price">
                 <span ngClass="class_shopping_price_title">Precio</span>
-                <span style="color: #516ce2;">{{transformPrice(productPrice())}}</span>
+                <span>{{transformPrice(productPrice())}}</span>
             </div>
 
             <div ngClass="class_shopping_price_line_divisor"></div>
 
             <div ngClass="class_shopping_total_price">
                 <span ngClass="class_shopping_price_title">Adicional</span>
-                <span style="color: orange;">+{{transformPrice(productPrice() * (0.0015 * productPayment()))}}</span>
+                <span>+{{transformPrice(productPrice() * (0.0015 * productPayment()))}}</span>
             </div>
 
             <div ngClass="class_shopping_price_line_divisor"></div>
@@ -80,13 +80,15 @@
                 <span ngClass="class_shopping_percent">{{(0.15 * productPayment()).toFixed(1)}}%</span>
             </div>
 
-            <div ngClass="class_shopping_total_price class_shopping_final_price">
+            <div ngClass="class_shopping_price_line_divisor"></div>
+
+            <div style="color: rgb(223, 118, 118)" ngClass="class_shopping_total_price">
                 <span ngClass="class_shopping_price_title">Total</span>
                 <span>{{transformPrice(productPaymentTotal())}}</span>
             </div>
 
-            <div ngClass="class_shopping_button_container">
-                <button ngClass="btn btn-primary">Pagar</button>
+            <div ngClass="class_shopping_button_payment">
+                <span>Pagar</span>
             </div>
         </div>
     </div>

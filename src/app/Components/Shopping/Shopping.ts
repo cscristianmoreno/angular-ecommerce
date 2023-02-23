@@ -25,7 +25,7 @@ export class Shopping {
     }
 
     public transformPrice(value: number) {
-        return new Intl.NumberFormat("de-DE", { style: "currency", currency: "USD"}).format(value);
+        return "$" + new Intl.NumberFormat("en-US", { maximumSignificantDigits: 5 }).format(value);
     }
 
     public ngAfterViewInit() {

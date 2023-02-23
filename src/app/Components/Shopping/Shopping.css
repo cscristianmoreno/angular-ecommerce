@@ -60,12 +60,13 @@
     /* padding: 15px; */
     border-radius: 10px;
     height: 100%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 5%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 25%);
     /* border-style: solid; */
     /* border-color: orange; */
     /* background-color: rgb(240, 240, 240); */
     border-width: 1px;
     /* color: white; */
+    overflow: hidden;
 }
 
 .class_shopping_total_price_title_container {
@@ -90,12 +91,19 @@
     width: 350px;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding: 10px
+    padding: 10px;
+}
+
+.class_shopping_total_price span:last-child {
+    color: rgb(175, 175, 175) !important;
+    font-weight: 500;
+    /* font-weight: bolder; */
 }
 
 .class_shopping_price_title {
-    font-size: 14px;
-    font-weight: 500;
+    color: rgb(99, 99, 99);
+    /* font-size: 12px; */
+    /* font-weight: 500; */
 }
 
 .class_shopping_price_line_divisor {
@@ -104,26 +112,24 @@
     border-color: rgb(241, 241, 241);
 }
 
-.class_shopping_final_price {
+/* .class_shopping_final_price {
     display: flex;
     align-items: center;
     background-color: #b4b4b4;
     color: white;
-    /* font-weight: bolder; */
     font-size: 18px;
     padding: 10px;
-}
+} */
 
-.class_shopping_total_price span {
-    /* padding: 10px; */
-    /* width: 100px; */
-}
-
-.class_shopping_button_container {
+.class_shopping_button_payment {
     display: flex;
-    width: 175px;
-    justify-content: space-between;
-    margin-top: 30px;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    background-color: #796fd4;
+    color: white;
+    /* font-weight: bolder; */
+    cursor: pointer;
 }
 
 .class_shopping_empty_saved {
